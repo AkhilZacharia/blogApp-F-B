@@ -12,7 +12,7 @@ const Home = () => {
 
 
    useEffect(()=>{
-      axiosInstance.get('http://localhost:3000/blog/').then((res)=>{
+      axiosInstance.get('/api/blog/').then((res)=>{
          setData(res.data);
       }).catch((err)=>{
         console.log(err);
@@ -23,14 +23,14 @@ const Home = () => {
      navigate('/addblogs',{state:{val}})           //through a parameter val we are passing the data to the addblogs page
    }                                     // we use state to pass the values like this in navigate fn
 // function delete_blog(id){
-//   axiosInstance.delete(`http://localhost:3000/blog/delete/${id}`,cardData).then((res)=>{
+//   axiosInstance.delete(`/api/blog/delete/${id}`,cardData).then((res)=>{
 //     alert(res.data.message);
 //     navigate('/blogs')
 //   })
 // }
 
 function delete_blog(id) {
-  axiosInstance.delete(`http://localhost:3000/blog/delete/${id}`).then((res) => {
+  axiosInstance.delete(`/api/blog/delete/${id}`).then((res) => {
       alert(res.data.message);
       // Filter out the deleted blog from the state
       setData((prevData) => prevData.filter((blog) => blog._id !== id));

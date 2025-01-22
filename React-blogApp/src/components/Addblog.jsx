@@ -15,12 +15,12 @@ const Addblog = () => {
 
   function capValue(){
    if(location.state!=null){
-        axiosInstance.put('http://localhost:3000/blog/edit/'+location.state.val._id,form).then((res)=>{
+        axiosInstance.put('/api/blog/edit/'+location.state.val._id,form).then((res)=>{
           alert(res.data.message);
           navigate('/blogs')
         })
    }else{
-    axiosInstance.post('http://localhost:3000/blog/addblog',form).then((res)=>{
+    axiosInstance.post('/api/blog/addblog',form).then((res)=>{
       alert(res.data.message);
       navigate('/blogs');
      
